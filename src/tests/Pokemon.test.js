@@ -5,12 +5,14 @@ import renderWithRouter from '../renderWithRouter';
 import App from '../App';
 
 describe('Teste o componente <Pokemon.js />', () => {
+  const moreDetails = 'More details';
   it('Testa se é renderizado um card com as informações de determinado pokémon', () => {
     renderWithRouter(<App />);
     const botaoElectric = screen.queryByRole('button', { name: 'Electric' });
 
     userEvent.click(botaoElectric); // A Pokedéx deverá mostrar os pokémons normalmente (sem filtros) quando o botão All for clicado
-    const linkMoreDetails = screen.queryByRole('link', { name: 'More details' });
+
+    const linkMoreDetails = screen.queryByRole('link', { name: moreDetails });
 
     userEvent.click(linkMoreDetails);
     const namePokemon = screen.getByText('Pikachu');
@@ -32,7 +34,7 @@ describe('Teste o componente <Pokemon.js />', () => {
     const botaoElectric = screen.queryByRole('button', { name: 'Electric' });
 
     userEvent.click(botaoElectric);
-    const linkMoreDetails = screen.queryByRole('link', { name: 'More details' });
+    const linkMoreDetails = screen.queryByRole('link', { name: moreDetails });
     const hrfAttribute = linkMoreDetails.getAttribute('href');
     // console.log(hrfAttribute);
     expect(hrfAttribute).toBe('/pokemons/25');
@@ -43,7 +45,7 @@ describe('Teste o componente <Pokemon.js />', () => {
     const botaoElectric = screen.queryByRole('button', { name: 'Electric' });
 
     userEvent.click(botaoElectric); // A Pokedéx deverá mostrar os pokémons normalmente (sem filtros) quando o botão All for clicado
-    const linkMoreDetails = screen.queryByRole('link', { name: 'More details' });
+    const linkMoreDetails = screen.queryByRole('link', { name: moreDetails });
 
     userEvent.click(linkMoreDetails);
     const h2 = screen.queryByRole('heading', { name: 'Pikachu Details' });
@@ -56,7 +58,7 @@ describe('Teste o componente <Pokemon.js />', () => {
     const botaoElectric = screen.queryByRole('button', { name: 'Electric' });
 
     userEvent.click(botaoElectric); // A Pokedéx deverá mostrar os pokémons normalmente (sem filtros) quando o botão All for clicado
-    const linkMoreDetails = screen.queryByRole('link', { name: 'More details' });
+    const linkMoreDetails = screen.queryByRole('link', { name: moreDetails });
 
     userEvent.click(linkMoreDetails);
     const { pathname } = history.location;
